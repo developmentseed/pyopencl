@@ -6,7 +6,7 @@ cd deps
 
 
 curl https://tiker.net/tmp/.tmux.conf
-brew install git openssl-devel
+brew install git
 curl -L -O http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz
 tar -xf ruby-2.1.2.tar.gz
 cd ruby-2.1.2
