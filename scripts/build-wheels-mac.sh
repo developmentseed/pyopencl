@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e -x
 
-mkdir -p /deps
-cd /deps
+mkdir -p deps
+cd deps
 
 
 curl https://tiker.net/tmp/.tmux.conf
@@ -55,7 +55,7 @@ done
 # Bundle license files
 
 /opt/python/cp39-cp39/bin/pip install delocate
-/opt/python/cp39-cp39/bin/python /io/scripts/fix-wheel.py /deps/ocl-icd/COPYING
+/opt/python/cp39-cp39/bin/python /io/scripts/fix-wheel.py deps/ocl-icd/COPYING
 
 if [[ "${TWINE_USERNAME}" == "" ]]; then
     echo "TWINE_USERNAME not set. Skipping uploading wheels"

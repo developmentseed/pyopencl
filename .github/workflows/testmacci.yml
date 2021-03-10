@@ -19,5 +19,5 @@ jobs:
                     unset TWINE_USERNAME
                 fi
 
-                scripts/build-wheels.sh
+                scripts/build-wheels-mac.sh
                 ls wheelhouse/
