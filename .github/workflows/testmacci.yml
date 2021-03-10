@@ -1,0 +1,23 @@
+name: CI
+on: push
+
+jobs:
+    macwheels:
+        name: Build and upload macOS wheels
+        runs-on: macos-latest
+        steps:
+        -   uses: actions/checkout@v2
+        -   name: "Main Script"
+            env:
+                TWINE_USERNAME: __token__
+                TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
+
+            run: |
+                # Only perform upload for tag builds, otherwise unset TWINE_USERNAME to prevent
+                if ! [[ $GITHUB_REF == refs/tags* ]]; then
+                    echo "Not a tag build, GITHUB_REF is '$GITHUB_REF'. Unsetting TWINE_USERNAME"
+                    unset TWINE_USERNAME
+                fi
+
+                scripts/build-wheels.sh
+                ls wheelhouse/
